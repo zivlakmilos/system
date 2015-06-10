@@ -2,7 +2,6 @@ import XMonad
 import XMonad.Config.Azerty  
 import XMonad.Hooks.DynamicLog  
 import XMonad.Hooks.ManageDocks  
-import XMonad.Hooks.SetWMName
 import XMonad.Util.Run(spawnPipe)  
 import XMonad.Util.EZConfig  
 import Graphics.X11.ExtraTypes.XF86  
@@ -15,7 +14,7 @@ import XMonad.Layout.Grid
 import Data.Ratio ((%))  
 import XMonad.Actions.CycleWS  
 import qualified XMonad.StackSet as W  
-import System.IO
+import System.IO  
 myWorkspaces  = ["1:main","2:chat","3:trades","4:Pidgin","5:graphic","6:files", "7:media"]  
 myLayout = onWorkspace "4:Pidgin" pidginLayout $ onWorkspaces ["2:chat", "7:media"] nobordersLayout $ tiled1 ||| Mirror tiled1 ||| nobordersLayout  
 	where  
@@ -60,10 +59,9 @@ main = do
 		, normalBorderColor = "#60A1AD"  
 		, focusedBorderColor = "#68e862"  
 		, borderWidth    = 2  
-        , startupHook = setWMName "LG3D"
 		}`additionalKeys`  
 		[ ((controlMask, xK_space), spawn "exe=`dmenu_run -b -nb black -nf yellow -sf yellow` && eval \"exec $exe\"") -- spawn dmenu  
-		, ((mod4Mask, xK_Return), spawn "urxvt") -- spawn terminator terminal  
+		, ((mod4Mask, xK_Return), spawn "terminator") -- spawn terminator terminal  
 		, ((mod4Mask, xK_w), spawn "firefox --private") -- firefox browser in porn mode  
 		, ((mod1Mask, xK_F4), kill) -- to kill app  
 		, ((mod4Mask, xK_x), spawn "xchat")  
